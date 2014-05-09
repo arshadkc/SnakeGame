@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Grid2D.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Grid2D.cs" Line="97" Column="4" />
+      <File FileName="Assets\Scripts\SnakeBoardScript.cs" Line="140" Column="34" />
+      <File FileName="Assets\Scripts\InputHandlerScript.cs" Line="21" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
