@@ -16,7 +16,7 @@ public class SnakeBoardScript : MonoBehaviour {
 	Grid2D grid = new Grid2D(30,20);
 	int unitSize = 30;
 	int currentScore = 0;
-
+	bool SpawnFruitInThisFrame = false;
 	const int HEAD = 0;
 	const int ID_SNAKE = 1;
 	const int ID_FRUIT = 2;
@@ -74,7 +74,7 @@ public class SnakeBoardScript : MonoBehaviour {
 				// Respawn new fruit.
 				grid.Remove (fruitPosition);
 				Destroy (fruit);
-				SpawnFruit ();
+				SpawnFruitInThisFrame = true;
 			}
 
 			// Update snake trail
@@ -95,6 +95,11 @@ public class SnakeBoardScript : MonoBehaviour {
 			// Render
 			RenderSnake ();
 
+			if(SpawnFruitInThisFrame)
+			{
+				SpawnFruit();
+				SpawnFruitInThisFrame = false;
+			}
 			yield return new WaitForSeconds (frameInterval);	
 
 		}
@@ -146,7 +151,7 @@ public class SnakeBoardScript : MonoBehaviour {
 	Vector3 ConvertGridToWorld(Vector2 point)
 	{
 		Vector3 screenPosition = new Vector3 (0f, 0f, -3.5f);
-		// Normalize the gris position.
+		// Normalize the grid position.
 		float nx = ((point.x+grid.CellSize*0.5f) / (grid.CellSize*grid.NumOfCellsPerSide));
 		float ny = ((point.y+grid.CellSize*0.5f)/ (grid.CellSize*grid.NumOfCellsPerSide));
 
@@ -155,7 +160,7 @@ public class SnakeBoardScript : MonoBehaviour {
 		screenPosition.y = 2.0f * ny - 1.0f;
 
 		// Scale to Ortho size.
-		screenPosition.x *= Camera.main.orthographicSize;
+		screenPosition.x *= Camera.main.orthographicSize * Camera.main.aspect;
 		screenPosition.y *= Camera.main.orthographicSize;
 
 		return screenPosition;
